@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 
 # Set the title of the application
 st.title("Understanding Networking for Local Applications")
@@ -45,13 +44,14 @@ st.markdown(
     """
 )
 
-# Check if the image file exists before displaying it
-image_path = "/mnt/data/A_detailed_conceptual_diagram_illustrating_network.png"
+# Allow user to upload an image dynamically
+uploaded_image = st.file_uploader("Upload Conceptual Diagram", type=["png", "jpg", "jpeg"])
 
-if os.path.exists(image_path):
-    st.image(image_path, caption="Conceptual Diagram: Networking for Local Applications")
+# Display the uploaded image if available
+if uploaded_image is not None:
+    st.image(uploaded_image, caption="Conceptual Diagram: Networking for Local Applications")
 else:
-    st.error(f"Image file not found at {image_path}")
+    st.warning("Please upload an image for the conceptual diagram.")
 
 # Section 3: How Networking Enables Multi-User Functionality
 st.header("How Networking Enables Multi-User Functionality")
