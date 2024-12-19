@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 # Set the title of the application
 st.title("Understanding Networking for Local Applications")
@@ -44,8 +45,13 @@ st.markdown(
     """
 )
 
-# Display the conceptual diagram
-st.image("/mnt/data/A_detailed_conceptual_diagram_illustrating_network.png", caption="Conceptual Diagram: Networking for Local Applications")
+# Check if the image file exists before displaying it
+image_path = "/mnt/data/A_detailed_conceptual_diagram_illustrating_network.png"
+
+if os.path.exists(image_path):
+    st.image(image_path, caption="Conceptual Diagram: Networking for Local Applications")
+else:
+    st.error(f"Image file not found at {image_path}")
 
 # Section 3: How Networking Enables Multi-User Functionality
 st.header("How Networking Enables Multi-User Functionality")
